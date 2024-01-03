@@ -1,0 +1,9 @@
+html {
+    /* import Inter font in layout */
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply text-zinc-700 bg-zinc-200;
+}
+
+html.dark {
+    @apply text-zinc-200 bg-[#13151a];
+}

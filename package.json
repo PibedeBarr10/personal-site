@@ -1,0 +1,23 @@
+{
+  "name": "personal-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "@fontsource/inter": "^5.0.16",
+    "astro": "^4.0.8",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@unocss/reset": "^0.58.2",
+    "@unocss/transformer-directives": "^0.58.2",
+    "unocss": "^0.58.2"
+  }
+}

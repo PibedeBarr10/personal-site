@@ -1,0 +1,55 @@
+---
+import type { Props } from "./interfaces";
+import { defaultLinks } from "./data";
+import Link from '../../atoms/Link/Link.astro';
+import ThemeButton from '../../atoms/ThemeButton/ThemeButton.astro';
+
+const { links = defaultLinks } = Astro.props;
+---
+
+<ul class="flex gap-4 md:gap-8">
+	{links.map((link) => (
+		<li class="flex items-center">
+			<Link
+				href={link.href}
+				additionalClasses={link.additionalClasses}
+			>
+				{link.text}
+			</Link>
+		</li>
+	))}
+	<li>
+		<ThemeButton>
+			Theme
+		</ThemeButton>
+	</li>
+</ul>
+
+<!-- Astro doesn't enable is:inline attribiute with TypeScript -->
+<!-- <script src="../scripts/darkMode.ts"></script> -->
+<script is:inline>
+	const modes = ['light', 'dark']
+
+	const theme = (() => {
+		if (localStorage) {
+			const themeStorageValue = localStorage.getItem('theme') ?? 'light'
+
+			if (modes.includes(themeStorageValue)) {
+				return themeStorageValue
+			}
+		}
+
+		if (window && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			return 'dark'
+		}
+
+		return 'light'
+	})()
+
+	if (theme === 'light') {
+		document.documentElement.classList.remove('dark')
+	} else {
+		document.documentElement.classList.add('dark')
+	}
+	window.localStorage.setItem('theme', theme)
+</script>

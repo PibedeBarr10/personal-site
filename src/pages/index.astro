@@ -1,0 +1,28 @@
+---
+import MainPage from '../layouts/MainPage.astro';
+import Menu from '../components/molecules/Menu/Menu.astro';
+---
+
+<MainPage title="Welcome to Astro.">
+	<main class="md:max-w-2xl text-zinc-700 dark:text-zinc-400">
+		<div class="text-sm uppercase tracking-wider mb-8">
+			<a href="/" class="hover:text-zinc-400 dark:hover:text-zinc-200 transition-colors duration-300">
+				Piotr Wojtasiewicz
+			</a>
+		</div>
+
+		<p class="text-5xl font-bold text-zinc-800 dark:text-zinc-200 mb-6">
+			Frontend Developer
+		</p>
+		<p class="mb-10">
+			I'm <span class="text-zinc-800 dark:text-zinc-200">Frontend Developer</span> working in Warsaw and I love learn about new technologies.<br />
+			This website is my
+			<span class="bg-clip-text text-transparent bg-gradient-to-r from-[#74FCD6] to-[#88FF89] font-semibold">
+				digital garden
+			</span>
+			- a collection of things I've learned over the years.
+		</p>
+
+		<Menu />
+	</main>
+</MainPage>

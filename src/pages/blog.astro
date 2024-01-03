@@ -1,0 +1,33 @@
+---
+import Default from '../layouts/Default.astro'
+import { getCollection } from 'astro:content'
+
+const blogEntries = await getCollection('blog')
+---
+
+<Default title="Welcome to Astro.">
+	<main class="text-zinc-700 dark:text-zinc-400">
+		<h1 class="text-2xl font-bold text-zinc-700 dark:text-zinc-200 mb-6">
+			Blog Posts
+		</h1>
+
+		<ul>
+			{blogEntries.map(blogPostEntry => (
+				<li class="-ml-4 cursor-pointer p-4 rounded hover:text-zinc-600 hover:bg-zinc-400 hover:dark:text-zinc-200 hover:dark:bg-zinc-800 transition-colors duration-300">
+					<a
+						href={`/blog/${blogPostEntry.slug}`}
+						class="flex justify-between items-center"
+					>
+						<span>
+							{blogPostEntry.data.title}
+						</span>
+						<span class="flex-grow border-t border-zinc-700 mx-4" />
+						<span class="min-w-[70px] text-right">
+							{blogPostEntry.data.pubDate.toDateString()}
+						</span>
+					</a>
+				</li>
+			))}
+		</ul>
+	</main>
+</Default>

@@ -1,0 +1,36 @@
+---
+import Default from '../../layouts/Default.astro'
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog')
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry }
+  }))
+}
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+---
+
+<Default title={`${entry.data.title} - blog`}>
+    <h1 class="text-xl font-bold mb-8">
+        {entry.data.title}
+    </h1>
+
+    <div class="md-content">
+        <Content />
+    </div>
+</Default>
+
+<style is:global>
+    .md-content h1 {
+        @apply text-xl font-bold mb-4;
+    }
+    .md-content h2 {
+        @apply text-lg font-semibold mb-3;
+    }
+    .md-content h3 {
+        @apply text-md font-semibold mb-3;
+    }
+</style>

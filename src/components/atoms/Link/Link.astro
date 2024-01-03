@@ -1,0 +1,17 @@
+---
+import type { Props } from "./interfaces";
+
+const { href, additionalClasses = '' } = Astro.props;
+---
+
+<a
+    href={href}
+    class:list={['link', additionalClasses ]}
+>
+    <slot />
+</a>
+<style>
+	.link {
+		@apply rounded px-4 py-2 transition-colors duration-300 text-zinc-700 hover:text-zinc-600 hover:bg-zinc-400 dark:text-zinc-400 hover:dark:text-zinc-200 hover:dark:bg-zinc-800;
+	}
+</style>
